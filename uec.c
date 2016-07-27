@@ -77,6 +77,16 @@ void emittree(i)
     case T_READ:   printf(" movq $.Lprompt,%%rdi\n");
                    printf(" movq $0,%%rax\n");
                    printf(" call printf\n");
+
+                   printf(".L%s: .string \"%s\"\n", stab[ntab[i].left].name);
+                   printf(" movq $.L%s,%%rdi\n", stab[ntab[i].left].name);
+                   printf(" movq $0,%%rax\n");
+                   printf(" call printf\n");
+
+                   printf(" movq $.Lequal,%%rdi\n");
+                   printf(" movq $0,%%rax\n");
+                   printf(" call printf\n");
+
                    printf(" leaq %d(%%rbp) ,%%rsi\n", -(ntab[i].left+1)*8);
                    printf(" movq $.Lread,%%rdi\n");
                    printf(" movq $0,%%rax\n");
@@ -172,6 +182,7 @@ void dotree(i)
   printf(".Lprompt: .string \"> \"\n");
   printf(".Lread:   .string \"%%ld\"\n");
   printf(".Lprint:  .string \"%%ld\\n\"\n");
+  printf(".Lequal:  .string \" = \"\n");
   printf("       .text\n");
   printf(".global main\n");
   printf("main:\n");

@@ -1,5 +1,8 @@
 main {
   read x;
+  read y;
+  read z;
+  read w;
   while(x<3) {
     print x;
     x = x + 1;
