@@ -183,7 +183,7 @@ void dotree(i)
   printf(".Lprint:  .string \"%%ld\\n\"\n");
   printf(".Lequal:  .string \" = \"\n");
 
-  // 用いる変数名を.rodateセクションに記述
+  // 用いる変数名を.rodataセクションに記述
   int j;
   for ( j = 0; j < stabuse; j++) {
     printf(".L%s: .string \"%s\"\n", stab[j].name, stab[j].name);
