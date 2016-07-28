@@ -78,7 +78,6 @@ void emittree(i)
                    printf(" movq $0,%%rax\n");
                    printf(" call printf\n");
 
-                   printf(".L%s: .string \"%s\"\n", stab[ntab[i].left].name);
                    printf(" movq $.L%s,%%rdi\n", stab[ntab[i].left].name);
                    printf(" movq $0,%%rax\n");
                    printf(" call printf\n");
@@ -183,6 +182,13 @@ void dotree(i)
   printf(".Lread:   .string \"%%ld\"\n");
   printf(".Lprint:  .string \"%%ld\\n\"\n");
   printf(".Lequal:  .string \" = \"\n");
+
+  // 用いる変数名を.rodateセクションに記述
+  int j;
+  for ( j = 0; j < stabuse; j++) {
+    printf(".L%s: .string \"%s\"\n", stab[j].name, stab[j].name);
+  }
+
   printf("       .text\n");
   printf(".global main\n");
   printf("main:\n");
