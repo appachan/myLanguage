@@ -4,8 +4,5 @@ main {
   read z;
   read w;
   read hogefugafoobar;
-  while(x<3) {
-    print x;
-    x = x + 1;
-  }
+  print x + year + z + w + hogefugafoobar;
 }
