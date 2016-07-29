@@ -1,8 +1,9 @@
 main {
-  read x;
-  read year;
-  read z;
-  read w;
-  read hogefugafoobar;
-  print x + year + z + w + hogefugafoobar;
+  read loop;
+  x = loop;
+  y = loop;
+  do {
+    print y;
+    y = y + 1;
+  } while (y<5);
 }
