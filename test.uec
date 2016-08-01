@@ -1,6 +1,5 @@
 main {
+  print readStat;
   read x;
-  read y;
-  read z;
   print readStat;
 }

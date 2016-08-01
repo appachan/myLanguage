@@ -212,6 +212,7 @@ void dotree(i)
   stk *= 16;
   printf("       subq   $%d,%%rsp\n", stk);
 
+  // readStatを1で初期化
   printf(" movq $1,%d(%%rbp)\n", -(lookup("readStat")+1)*8);
 
   emittree(i);
