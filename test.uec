@@ -1,11 +1,12 @@
 main {
-  read x;
-  print x;
-  print readStat;
-  read hoge;
-  print hoge;
-  print readStat;
-  read inputWord;
-  print inputWord;
-  print readStat;
+  read n;
+  i = n;
+  while (i<3) {
+    print i;
+    i = i + 1;
+  }
+  do {
+    print i;
+    i = i + 1;
+  } while (i<3);
 }
