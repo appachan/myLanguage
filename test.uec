@@ -1,6 +1,17 @@
 main {
   x = 1;
   y = 2;
+  z = 0-3;
+  w = 0-4;
+  print x + y;
   print x - y;
-  print y - x;
+  print x * y;
+  print x * z;
+  print z * w;
+  print x / y;
+  print w / z;
+  print y / w;
+  print x % y;
+  print x - y * z + w;
+  print x * (z + w / y);
 }
