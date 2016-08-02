@@ -87,10 +87,13 @@ void emittree(i)
                      printf(" movq $0,%%rax\n");
                      printf(" call printf\n");
 
-                     printf(" leaq %d(%%rbp) ,%%rsi\n", -(ntab[i].left+1)*8);
+                     printf(" leaq %d(%%rbp),%%rsi\n", -(ntab[i].left+1)*8);
                      printf(" movq $.Lread,%%rdi\n");
                      printf(" movq $0,%%rax\n");
                      printf(" call scanf\n");
+
+                     printf(" movq %%rax,%d(%%rbp)\n", -(lookup("readStat")+1)*8);
+
                      break;
     case T_PRINT:    emittree(ntab[i].left);
                      printf(" popq %%rsi\n");
@@ -193,6 +196,7 @@ void dotree(i)
   printf(".Lprint:  .string \"%%ld\\n\"\n");
   printf(".Lequal:  .string \" = \"\n");
 
+  lookup("readStat");
   // 用いる変数名を.rodataセクションに記述
   int j;
   for ( j = 0; j < stabuse; j++) {
@@ -203,10 +207,14 @@ void dotree(i)
   printf(".global main\n");
   printf("main:\n");
   printf("       pushq  %%rbp\n");
-  printf("        movq   %%rsp,%%rbp\n");
+  printf("       movq   %%rsp,%%rbp\n");
   stk = (8*stabuse + 15) / 16;
   stk *= 16;
   printf("       subq   $%d,%%rsp\n", stk);
+
+  // readStatを1で初期化
+  printf(" movq $1,%d(%%rbp)\n", -(lookup("readStat")+1)*8);
+
   emittree(i);
   printf("       leave\n");
   printf("       ret\n");

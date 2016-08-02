@@ -1,6 +1,12 @@
 main {
+<<<<<<< HEAD
   x = 1;
   y = 2;
   print x - y;
   print y - x;
+=======
+  print readStat;
+  read x;
+  print readStat;
+>>>>>>> 256f8fe801e5f5dd1480b55ed67e394c6005d447
 }
