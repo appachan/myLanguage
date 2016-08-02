@@ -1,9 +1,6 @@
 main {
-  read loop;
-  x = loop;
-  y = loop;
-  do {
-    print y;
-    y = y + 1;
-  } while (y<5);
+  x = 1;
+  y = 2;
+  print x - y;
+  print y - x;
 }
